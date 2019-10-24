@@ -8,17 +8,20 @@ import { CounterService } from '../counter.service';
 })
 export class CounterComponent implements OnInit {
 
-  title = "compteur 1"
+  title = "Compteur 1"
   
   @Input() position;
 
-  constructor(public counterService: CounterService) { }
+  constructor(public counterService: CounterService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   increment() {
     this.counterService.increment(this.position);
+  }
+
+  decrement() {
+    this.counterService.decrement(this.position);
   }
 
 }

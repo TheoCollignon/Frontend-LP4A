@@ -16,4 +16,9 @@ export class CounterService {
     this.initialValue[position]++;
     return this.initialValue[position];
   }
+
+  decrement(position: number): number {
+    this.initialValue[position]--;
+    return this.initialValue[position];
+  }
 }
