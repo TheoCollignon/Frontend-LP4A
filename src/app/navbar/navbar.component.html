@@ -23,12 +23,8 @@
       <span>counters</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-      <h1>Mes compteurs</h1>
-        <div>
-            <button (click)="reset()">RESET</button>
-        </div>
-        <app-counter [position]="0"></app-counter>
-        <app-counter [position]="1"></app-counter>
-        <app-counter [position]="2"></app-counter>
+    <div class="content">
+      <app-home></app-home>
+    </div>  
   </mat-sidenav-content>
 </mat-sidenav-container>
