@@ -1,5 +1,5 @@
 <h1>{{title}}</h1>
 
-<p class="value_counter">Valeur : {{counterService.initialValue[position]}}</p>
-<button class="increment_button" (click)="increment()">incrementer</button>
-<button class="decrement_button" (click)="decrement()">décrementer</button>
+<p>Valeur : {{counterService.initialValue[position]}}</p>
+<button (click)="increment()">incrementer</button>
+<button (click)="decrement()">décrementer</button>
