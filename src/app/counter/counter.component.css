@@ -5,4 +5,8 @@ h1 {
 .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');
     background-size: cover;
-  }
+}
+
+p {
+    font-size: 200%;
+}
