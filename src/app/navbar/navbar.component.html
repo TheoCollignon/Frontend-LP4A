@@ -25,6 +25,12 @@
     <!-- Add Content Here -->
     <div class="content">
       <app-home></app-home>
+      <header>
+        <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
+        <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
+        <a routerLink="/">Home</a>&nbsp;
+        <a routerLink="profile" *ngIf="auth.loggedIn">Profile</a>
+      </header>
     </div>  
   </mat-sidenav-content>
 </mat-sidenav-container>
