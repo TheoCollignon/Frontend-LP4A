@@ -10,6 +10,7 @@ export class CounterService {
   public initialValue= [12,6,78];
   constructor(private httpClient :HttpClient) { }
   url = 'https://lp4asgadot.herokuapp.com/counters/'
+  url2 = 'https://lp4asgadot.herokuapp.com/counters.json'
   
   reset(){
     this.initialValue=[0,0,0];
@@ -27,7 +28,11 @@ export class CounterService {
     return this.initialValue[position];
   }
 
-  getCounterValue(id :number) : Observable<Counter>{
-    return this.httpClient.get<Counter>("https://lp4asgadot.herokuapp.com/counters/"+id+".json");
+  getCounter(id: number): Observable<Counter> {
+    return this.httpClient.get<Counter>(this.url + id + '.json');
+  }
+
+  getCounters(): Observable<Counter[]> {
+    return this.httpClient.get<Counter[]>(this.url2);
   }
 }

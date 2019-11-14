@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CounterService } from '../counter.service';
+import { Observable } from 'rxjs';
 import { Counter } from '../counter';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-counter',
@@ -8,33 +10,35 @@ import { Counter } from '../counter';
   styleUrls: ['./counter.component.css']
 })
 export class CounterComponent implements OnInit {
-  @Input() position : number;
 
-  value: Counter;
-  constructor(public counterService: CounterService) { }
+  counter: Counter = new Counter();
+
+  constructor(
+    public counterService: CounterService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.position == 1){
-      this.counterService.getCounterValue(47)
-      .subscribe(counter => this.value =  counter)
-    }
-    if (this.position == 2){
-      this.counterService.getCounterValue(48)
-      .subscribe(counter => this.value =  counter)
-    }
-    if (this.position == 3){
-      this.counterService.getCounterValue(51)
-      .subscribe(counter => this.value =  counter)
-    }
+    this.route.params.subscribe(
+      () => {
+        this.getCounter();
+      }
+    )
   }
-  increment(){
-    //this.counterService.increment(this.position);
-        if(this.position == 1) this.counterService.increment(47).subscribe(counter => this.value = counter);
-        if(this.position == 2) this.counterService.increment(48).subscribe(counter => this.value = counter);
-        if(this.position == 3) this.counterService.increment(51).subscribe(counter => this.value = counter);
+
+  getCounter() {
+    this.counter.id = +this.route.snapshot.paramMap.get('id'); 
+    this.counterService.getCounter(this.counter.id)
+      .subscribe(counter => {
+        this.counter = counter;
+      });
   }
-  decrement(){
-    this.counterService.decrement(this.position);
+
+
+  increment() {
+    this.counterService.increment(this.counter.id)
+      .subscribe(counter => {
+        this.counter.value = counter.value;
+      });
   }
-  
+
 }

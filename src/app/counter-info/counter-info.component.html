@@ -1,0 +1,10 @@
+<mat-card class="card">
+    <mat-card-title>Compteur #{{counter.id}} : {{ counter.name }}</mat-card-title>
+
+    <mat-card-content>
+        <p>{{counter.value}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="increment()">Incrémenter</button>
+    </mat-card-actions>
+</mat-card>
